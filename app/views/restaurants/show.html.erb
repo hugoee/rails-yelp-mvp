@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @restaurant.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @restaurant.address %>
+</p>
+
+<p>
+  <strong>Phone_Number:</strong>
+  <%= @restaurant.phone_number %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @restaurant.category %>
+</p>
+
+<p>
+  <%= link_to 'Add a Review', new_restaurant_review_path(@restaurant) %>
+</p>
+
+<% if @restaurant.reviews.count.zero? %>
+  <p>
+    Hey ! Be the first to leave a review !
+  </p>
+<% else %>
+  <ul>
+    <% @restaurant.reviews.each do |review| %>
+      <li>
+        <%= review.content %>
+        <i class="fas fa-star">
+          <%= review.rating%>
+        </i>
+        <i class="fas fa-star"></i>
+        </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<p>
+  <%= link_to '  🔙       Back to list', restaurants_path %>
+</p>
